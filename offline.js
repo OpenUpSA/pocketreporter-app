@@ -1,15 +1,8 @@
+// Check that service workers are registered
 if ('serviceWorker' in navigator) {
-	console.log('CLIENT: service worker registration in progress.');
-	navigator.serviceWorker.register('/service-worker.js').then(
-		function() {
-			console.log('CLIENT: service worker registration complete.');
-		},
-		function(x) {
-			console.log(x);
-			console.log('CLIENT: service worker registration failure.');
-		}
-	);
-} 
-else {
-  console.log('CLIENT: service worker is not supported.');
+    // Use the window load event to keep the page load performant
+    window.addEventListener('load', () => {
+        console.log('CLIENT: service worker registration complete.');
+        navigator.serviceWorker.register('/service-worker.js');
+    });
 }
