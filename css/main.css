@@ -431,7 +431,4 @@ section.empty {
 .addButton {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
-
-/*# sourceMappingURL=main.css.map */
+  justify-content: center; }
