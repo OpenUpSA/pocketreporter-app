@@ -44,10 +44,6 @@ workbox.precaching.precacheAndRoute([
     "revision": "6c29d4ac38400c59b24db1b1de74470d"
   },
   {
-    "url": "custom-service-worker.js",
-    "revision": "27d26ca68a586eb3c13aafb38c16bc77"
-  },
-  {
     "url": "fonts/fontawesome-webfont.eot",
     "revision": "25a32416abee198dd821b0b17a198a8f"
   },
@@ -129,7 +125,7 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "index.html",
-    "revision": "64ecb494b89e1a50caa0e205f199f324"
+    "revision": "1dd3278c7d6341cfa3385f730dda01c4"
   },
   {
     "url": "js/helpers.js",
@@ -141,7 +137,7 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "js/main.js",
-    "revision": "4b7e78de422e7b168444a0eb32199d96"
+    "revision": "8070b2223a7d97b12de8ebca026959de"
   },
   {
     "url": "js/models.js",
