@@ -1,4 +1,4 @@
-var version = "v1::";
+var version = "v2::";
 var cache_files = [
     "index.html",
     "offline.js",
