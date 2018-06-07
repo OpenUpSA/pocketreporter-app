@@ -12,7 +12,6 @@
  */
 
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.2.0/workbox-sw.js");
-workbox.googleAnalytics.initialize();
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
@@ -34,11 +33,11 @@ self.__precacheManifest = [
   },
   {
     "url": "css/main.css",
-    "revision": "dd5feec4ac4b9ed902b1028a86360d39"
+    "revision": "c3adbe137000452700f7e1770af2dad9"
   },
   {
     "url": "css/main.scss",
-    "revision": "5ba1e81759b77d61fc77f825a244e446"
+    "revision": "21a6116d5f2a330820d7eb40d734af39"
   },
   {
     "url": "css/roboto.css",
@@ -126,7 +125,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "6228dd60ef8f17adba948f2acfc8abfa"
+    "revision": "64ecb494b89e1a50caa0e205f199f324"
   },
   {
     "url": "js/helpers.js",
@@ -134,7 +133,7 @@ self.__precacheManifest = [
   },
   {
     "url": "js/l10n.js",
-    "revision": "a9f41fcd421d9dc0d5fd3637db961b0f"
+    "revision": "9821b8b51e5fa72b65406bf5212facbd"
   },
   {
     "url": "js/main.js",
@@ -226,7 +225,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline.js",
-    "revision": "4d5ca8397c08c02523232667900ac85a"
+    "revision": "63d19eb9e30cd8efb07e0d8840bd87fb"
   },
   {
     "url": "README.md",
