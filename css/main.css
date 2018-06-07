@@ -428,4 +428,10 @@ section.empty {
 .language-choices .radio {
   margin-top: 20px; }
 
+.addButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /*# sourceMappingURL=main.css.map */
