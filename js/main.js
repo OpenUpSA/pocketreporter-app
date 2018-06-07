@@ -255,7 +255,7 @@ var app = {
     PocketReporter = new PocketReporter();
     router = new Router();
     Backbone.history.start();
-    if ('ga' in window) window.ga.startTrackerWithId('UA-48399585-49');
+    if ('ga' in window) window.ga.startTrackerWithId('UA-48399585-51');
     console.log('Event received: ',id);
   }
 };
