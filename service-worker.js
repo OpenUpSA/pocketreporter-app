@@ -18,7 +18,7 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.2.0/workbox
  * requests for URLs in the manifest.
  * See https://goo.gl/S9QRab
  */
-self.__precacheManifest = [
+workbox.precaching.precacheAndRoute([
   {
     "url": "css/bootstrap.css",
     "revision": "d2ab08de4855f3f73d2ecec6da794293"
@@ -42,6 +42,10 @@ self.__precacheManifest = [
   {
     "url": "css/roboto.css",
     "revision": "6c29d4ac38400c59b24db1b1de74470d"
+  },
+  {
+    "url": "custom-service-worker.js",
+    "revision": "27d26ca68a586eb3c13aafb38c16bc77"
   },
   {
     "url": "fonts/fontawesome-webfont.eot",
@@ -137,7 +141,7 @@ self.__precacheManifest = [
   },
   {
     "url": "js/main.js",
-    "revision": "4c56f779c33d9657dc7654637564a6e2"
+    "revision": "4b7e78de422e7b168444a0eb32199d96"
   },
   {
     "url": "js/models.js",
@@ -232,9 +236,18 @@ self.__precacheManifest = [
     "revision": "df91069dd6e9cd87e9a6165580ceabd5"
   },
   {
+    "url": "sw.js",
+    "revision": "e1181d1a273c73ef943419450a4a96e2"
+  },
+  {
     "url": "workbox-config.js",
-    "revision": "4851d1c58d1b933c914dc85ec781cef0"
+    "revision": "ee285289a369ae3912c63ca9a67187c6"
   }
-].concat(self.__precacheManifest || []);
+])
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+workbox.routing(
+  new RegExp('/'),
+  workbox.strategies.networkFirst()
+);
+workbox.googleAnalytics.initialize();
