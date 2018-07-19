@@ -517,9 +517,9 @@ var L10N = {
   }, 
   "en-za": {
     "about": {
-      "about_c4sa": "Code for South Africa is a non-profit organisation that promotes informed decision-making that drives social change. Find out more at <a href=\"http://code4sa.org\" target=\"_blank\">code4sa.org</a>.", 
+      "about_c4sa": "OpenUp is a non-profit organisation that promotes informed decision-making that drives social change. Find out more at <a href=\"http://openup.org.za\" target=\"_blank\">openup.org.za</a>.", 
       "background": "Background", 
-      "builtby": "Pocket Reporter is built by <a href=\"http://code4sa.org\" target=\"_blank\">Code for South Africa</a> and is inspired by the <a href=\"http://nqabile.co.za/virtual\" target=\"_blank\">Virtual Reporter tool</a> by <a href=\"http://kanthanpillay.com/content/about\" target=\"_blank\">Kanthan Pillay</a>.", 
+      "builtby": "Pocket Reporter is built by <a href=\"http://openup.org.za\" target=\"_blank\">OpenUp</a> and is inspired by the <a href=\"http://nqabile.co.za/virtual\" target=\"_blank\">Virtual Reporter tool</a> by <a href=\"http://kanthanpillay.com/content/about\" target=\"_blank\">Kanthan Pillay</a>.", 
       "contributors": "Contributors", 
       "feedback": "Send us feedback", 
       "line1": "Pocket Reporter is a news editor in your pocket that helps you be a better reporter.", 
