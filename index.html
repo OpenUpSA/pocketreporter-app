@@ -29,10 +29,12 @@
     gtag('js', new Date());
   </script>
 
-
-    ga('create', 'UA-48399585-51', 'auto');
-
-    ga('send', 'pageview');
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
+    }
   </script>
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -396,7 +398,7 @@
     </article>
   </script>
 
-  <script src="offline.js"></script>
+  <script src="js/OfflineEventQue.js"></script>
   <script src="js/vendor/jquery-1.11.2.min.js"></script>
   <script src="js/vendor/bootstrap-3.3.1.min.js"></script>
   <script src="js/vendor/handlebars-v4.0.5.js"></script>
