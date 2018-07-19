@@ -517,9 +517,9 @@ var L10N = {
   }, 
   "en-za": {
     "about": {
-      "about_c4sa": "OpenUp is a non-profit organisation that promotes informed decision-making that drives social change. Find out more at <a href=\"https://openup.org.za\" target=\"_blank\">openup.org.za</a>.", 
+      "about_c4sa": "Code for South Africa is a non-profit organisation that promotes informed decision-making that drives social change. Find out more at <a href=\"http://code4sa.org\" target=\"_blank\">code4sa.org</a>.", 
       "background": "Background", 
-      "builtby": "Pocket Reporter is built by <a href=\"https://openup.org.za\" target=\"_blank\">OpenUp</a> and is inspired by the <a href=\"https//nqabile.co.za/virtual\" target=\"_blank\">Virtual Reporter tool</a> by <a href=\"https//kanthanpillay.com/content/about\" target=\"_blank\">Kanthan Pillay</a>.", 
+      "builtby": "Pocket Reporter is built by <a href=\"http://code4sa.org\" target=\"_blank\">Code for South Africa</a> and is inspired by the <a href=\"http://nqabile.co.za/virtual\" target=\"_blank\">Virtual Reporter tool</a> by <a href=\"http://kanthanpillay.com/content/about\" target=\"_blank\">Kanthan Pillay</a>.", 
       "contributors": "Contributors", 
       "feedback": "Send us feedback", 
       "line1": "Pocket Reporter is a news editor in your pocket that helps you be a better reporter.", 
@@ -568,7 +568,7 @@ var L10N = {
         }
       }, 
       "10": {
-        "name": "Sports ", 
+        "name": "Sports", 
         "questions": {
           "1": "What type of sport are you reporting on?", 
           "10": "Get comments from coaches, players and fans of both teams.", 
@@ -629,6 +629,114 @@ var L10N = {
           "9": "Did they do military service? (formal or otherwise)"
         }
       }, 
+      "14": {
+        "name": "Political rally", 
+        "questions": {
+          "1": "Have you got copies or recordings of the main speakers\u2019 speeches?", 
+          "10": "Did you take down their contact details?", 
+          "11": "Did you contact the interviewees for responses to the main speaker\u2019s speech afterwards?", 
+          "12": "Did the interviewees believe the promises made by the speakers (and why)?", 
+          "13": "What sort of reception did the main speaker, and others, receive from the crowd?", 
+          "14": "What was the crowd\u2019s general mood and ambience?", 
+          "15": "Did you ensure that your business card was circulated to as many people as possible, especially those interviewed?", 
+          "2": "Have you confirmed the approximate crowd numbers with an independent source (police or venue management)?", 
+          "3": "Were there incidents of violence and/or injuries that can be confirmed with an independent source (police and emergency services)?", 
+          "4": "Have you conducted a minimum of 10 interviews with rally attendees from separate parts of the venue?", 
+          "5": "Did you establish where they live and what the socio-economic and political issues that affect them in these towns/areas/wards/streets were?", 
+          "6": "Did you get the biographical details of those interviewed, including ages, education levels, employment status and number of dependents?", 
+          "7": "Why did the interviewees attend the rally and what did they hope would come out of attending?", 
+          "8": "Where any attendees given a free lunch and a T-shirt in exchange for their presence?", 
+          "9": "Did you interview a wide spectrum of people living in different geographical areas and with different socio-economic backgrounds?"
+        }
+      }, 
+      "15": {
+        "name": "Election meeting", 
+        "questions": {
+          "1": "Have you established whether it is a political party branch meeting, a town hall meeting, ward councillor feedback session, a debate between political parties, a meeting of disaffected community members et cetera?", 
+          "10": "Have you confirmed the biographical details of those interviewed, including ages, education levels, employment status and number of dependents?", 
+          "11": "Did the interviewees express any changes in their everyday condition since the previous election?", 
+          "12": "Have you asked them how effective and accessible the current councillors are?", 
+          "13": "Have you asked them how voting works?", 
+          "14": "What were the reasons for people to attend the meeting?", 
+          "15": "Do they believe the promises made by the speakers?", 
+          "16": "The contact numbers of all interviewees noted?", 
+          "2": "What is the main topic or theme?", 
+          "3": "Did you get the organisers\u2019 contact details?", 
+          "4": "Have you double-checked the correct spelling and address of the venue?", 
+          "5": "Have you confirmed official attendance at the event with an independent source (police or venue management)?", 
+          "6": "Have you confirmed any incidents of violence and/or injuries with an independent source (police, emergency services or venue management)?", 
+          "7": "Have you conducted a minimum of ten interviews with attendees from separate parts of the venue?", 
+          "8": "Where do those interviewed live?", 
+          "9": "What are the socio-economic and political issues that affect them in these towns/areas/wards/streets?"
+        }
+      }, 
+      "16": {
+        "name": "Election day", 
+        "questions": {
+          "1": "Have you established contact and obtained contact details with the electoral officer in charge of the voting station?", 
+          "10": "Have you asked if there any inconsistencies during the counting process?", 
+          "11": "Did you establish and keep in continuous contact with the various political party representatives in the polling station who are also observing and ensuring the process is free and fair?", 
+          "12": "Did you check in with them on any alleged irregularities on a regular basis?", 
+          "2": "Have you observed and noted the electoral officers\u2019 relationship and conduct with the different various political parties?", 
+          "3": "Have you made notes about whether any of the behaviour pf the officers suggest favouritism or underline impartiality?", 
+          "4": "What degree of freedom did political parties enjoy outside voting stations?", 
+          "5": "Have you asked whether the party representatives were allowed to move around, organise and express their views outside the voting station?", 
+          "6": "Have you asked whether any parties were allowed to electioneer on the voting station premises itself?", 
+          "7": "Have you checked who the party agents are inside of the voting stations, and asked whether they had any concerns about the voting process?", 
+          "8": "Have you taken note of the conduct of electoral officers during voting and counting?", 
+          "9": "Have you noted whether there were impediments to free and fair voting and counting?"
+        }
+      }, 
+      "17": {
+        "name": "Incident at Public Health Facility", 
+        "questions": {
+          "1": "Patient\u2019s name and age?", 
+          "10": "Does patient/family believe they have adequate access to the health care services they need?", 
+          "11": "How far did they have to travel to get treated?", 
+          "12": "Any additional comments? NB: If a healthcare worker is named, they must be given the right to respond to allegations against them. This is usually done through the Department of Health. Even if no health official is named, you still need to get Department of Health comment", 
+          "13": "Contact details: phone number/email for your source/other useful contacts for your story", 
+          "2": "Why did they seek help (what was wrong with them)?", 
+          "3": "Name of public health institution that the patient visited?", 
+          "4": "How long did they wait before being attended to?",
+          "5": "Were they satisfied with the level of care they received? (treatment, medication)", 
+          "6": "If they were unhappy, why?", 
+          "7": "Names of the health officials they say did not treat them well?", 
+          "8": "Were they referred to any other health institution for help?", 
+          "9": "If yes, where and what treatement did they get?"
+        }
+      }, 
+      "18": {
+        "name": "Gender-based violence", 
+        "questions": {
+          "1": "Who was involved in the incident?", 
+          "10": "Have there been any court appearances? If yes, when and where? (If the matter was remanded make a note of the date to follow up)", 
+          "11": "What concerns does the victim have to share?", 
+          "12": "Any additional information?", 
+          "13": "Contact details: phone number/email for your source/other useful contacts for your story?", 
+          "2": "When, where and what happened?", 
+          "3": "Do the perpetrator and survivor know each other? If yes, what is the nature of their relationship?", 
+          "4": "If they are not known to each other, how did the abuser come into contact with the survivor?", 
+          "5": "Did the survivor seek help from a health centre/hospital/clinic?", 
+          "6": "If yes, where? And what treatment did they receive? In the case of rape which of these treatments were they offered? (HIV test, emergency contraception, antibiotics and counselling)", 
+          "7": "Has the incident been reported the police?", 
+          "8": "If yes, how did the police respond to the complaint?", 
+          "9": "Police\u2019s response to your media query?"
+        }
+      }, 
+      "19": {
+        "name": "Emergency services", 
+        "questions": {
+          "1": "How do people in need of emergency treatment get to nearest healthcare centre?", 
+          "2": "If by public transport or a taxi how far did they travel, and cost of the return trip", 
+          "3": "If they rely on ambulances, are calls to emergency numbers answered promptly?", 
+          "4": "How long does an ambulance usually take to get to them?", 
+          "5": "If an ambulance does not arrive, what other options do patients have?", 
+          "6": "Has the Department of Health been notified of any problems?", 
+          "7": "How has the Department of Health responded to the community\u2019s concerns?", 
+          "8": "Any more comments?", 
+          "9": "Contact details: phone number/email for your source/other useful contacts for your story?"
+        }
+      }, 
       "2": {
         "name": "Speech", 
         "questions": {
@@ -645,8 +753,70 @@ var L10N = {
           "9": "Is there any additional info from the question and answer period"
         }
       }, 
+      "20": {
+        "name": "Health infrastructure: Building & equipment", 
+        "questions": {
+          "1": "Where is the building situated?", 
+          "10": "How long will it take to fix?", 
+          "11": "Any more comments?", 
+          "12": "Contact details: phone number/email for your source/other useful contacts for your story?", 
+          "2": "What condition is it in?", 
+          "3": "Which department is responsible for maintaining the infrastructure?", 
+          "4": "Were responsible officials notified of the conditions?", 
+          "5": "What was their response?", 
+          "6": "What risks does the structure pose to people who are exposed to the conditions as they are? (e.g. damp, broken windows etc).", 
+          "7": "Are health services being affected by any of these conditions?", 
+          "8": "Have other plans been put in place while solutions are being sought?", 
+          "9": "Who is affected?"
+        }
+      }, 
+      "21": {
+        "name": "Lack of Water", 
+        "questions": {
+          "1": "Does your source have access to a reliable source of clean water?", 
+          "10": "What is the municipality\u2019s response to your queries?", 
+          "11": "Is there anything you wish to add?", 
+          "12": "Contact details: phone number/email for your source/other useful contacts for your story?", 
+          "2": "Is there a disruption in water services?", 
+          "3": "If yes, what is the problem?", 
+          "4": "What has caused disruptions with water services? (e.g. drought, damaged pipes, lack of maintenance etc)", 
+          "5": "What areas are affected?", 
+          "6": "How long has this been going on?", 
+          "7": "How are affected residents getting water?", 
+          "8": "Which municipality is responsible and is it aware of the problem?", 
+          "9": "Has the community engaged with the municipality?"
+        }
+      }, 
+      "22": {
+        "name": "Sanitation issues", 
+        "questions": {
+          "1": "What kind of toilets do the community/ facility have? (There may be a combo of communal/chemical/flush etc)", 
+          "2": "How many people have to share one toilet?", 
+          "3": "If there are too few toilets, has the community complained to the municipality or their councillor? (If yes, when? If no, why not?)", 
+          "4": "Municipality\u2019s response to the situation?", 
+          "5": "Municipality\u2019s response to your media query?", 
+          "6": "Is there anything you wish to add?"
+        }
+      }, 
+      "23": {
+        "name": "Nutrition", 
+        "questions": {
+          "1": "How much does your source spend a day/week/month on food for themselves?", 
+          "10": "What portion of the household income is spent on food?", 
+          "11": "Any comments you wish to add regarding this story?", 
+          "12": "Contact details: phone number/email for your source/other useful contacts for your story?", 
+          "2": "What does your source/their family eat and drink most of the time?", 
+          "3": "How many meals a day do they eat?", 
+          "4": "How long have they been eating this way?", 
+          "5": "Any health impact this diet has on them? (e.g. Diabetes, high blood pressure, stroke, heart problems?)", 
+          "6": "Have they sought medical attention?", 
+          "7": "What advice did they get from doctor/nurses regarding their diet?", 
+          "8": "How many people are in their household?", 
+          "9": "What is the main source of income for the family?"
+        }
+      }, 
       "3": {
-        "name": "Protest March ", 
+        "name": "Protest March", 
         "questions": {
           "1": "Tip: Ensure you have a large scarf and a bottle of vinegar (soak scarf in vinegar if police use teargas) in case there is teargas?", 
           "10": "Have there been any related protests in the past (how many, when and where) and was anything achieved?", 
@@ -754,7 +924,7 @@ var L10N = {
         }
       }, 
       "9": {
-        "name": "Fires ", 
+        "name": "Fires", 
         "questions": {
           "1": "How many people are dead and injured?", 
           "10": "Were there any acts of bravery or any rescues?", 
