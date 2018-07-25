@@ -1,3 +1,6 @@
+var gtagOfflineWrapper = new OfflineEventQue('gtagOffline', gtag);
+
+
 /*** Router ***/
 var Router = Backbone.Router.extend({
   routes : {
@@ -224,14 +227,32 @@ var PocketReporter = Backbone.Model.extend({
     setTimeout(_.bind(this.cycleLanguageChooser, this), 3000);
   },
 
-  trackEvent: function(category, action, label, value, newSession, success, error) {
-    if ('ga' in window) {
-      window.ga.trackEvent(category, action, label, value, newSession, success, error);
+  trackEvent: function(action, category, label, value) {
+    if ('gtag' in window) {
+      gtagOfflineWrapper.event(
+        'event', 
+        action, 
+        {
+          'event_category': category,
+          'event_label': label,
+          'value': value,
+        }
+      );
     }
   },
 
+
   trackView: function(view) {
-    if ('ga' in window) window.ga.trackView(view);
+    if ('gtag' in window) {
+      gtagOfflineWrapper.event(
+        'config', 
+        'UA-48399585-51', 
+        {
+          'page_title' : view,
+          'page_path': Backbone.history.getFragment(),
+        }
+      );
+    }
   }
 });
 
@@ -255,8 +276,6 @@ var app = {
     PocketReporter = new PocketReporter();
     router = new Router();
     Backbone.history.start();
-    if ('ga' in window) window.ga.startTrackerWithId('UA-48399585-51');
-    console.log('Event received: ',id);
   }
 };
 
