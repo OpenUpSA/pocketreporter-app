@@ -449,10 +449,26 @@ section.empty {
   background: none;
 }
 
+.submit-button {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 550px) {
+  .submit-button {
+    width: auto;
+    margin-right: 0.5rem;
+  }
+}
+
 .uppercase {
   text-transform: uppercase;
 }
 
 .w-full {
   width: 100%;
+}
+
+.mb-12 {
+  margin-bottom: 3rem;
 }
