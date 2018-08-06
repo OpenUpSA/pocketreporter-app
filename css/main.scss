@@ -669,3 +669,30 @@ section.empty {
   flex-direction: column;
   justify-content: center;
 }
+
+.notice {
+  text-align: center;
+  color: #383d41;
+  background-color: #e2e3e5;
+  border: 1px solid #d6d8db;
+  padding: 2rem 1rem 1rem;
+  border-radius: 4px;
+  margin: 0 1rem 1rem;
+}
+
+.btn-outline-success {
+  border: 1px solid #73c619;
+  color: #73c619;
+  background: none;
+  text-transform: uppercase;
+}
+
+// Utility classes in correspondance with https://tailwindcss.com.
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.w-full {
+  width: 100%;
+}

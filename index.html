@@ -125,6 +125,11 @@
 
       <article class="with-header with-footer box-sections collapsible-sections">
 
+        <div class="notice">
+          <p>Pocket Reporter is a free tool, supported exclusively by donor funding.</p>
+          <p>Please share stories that have been published via Pocket Reporter with us at <a href="mailto:info@openup.org.za">info@openup.org.za</a>.</p>
+        </div>
+
         {{#if stories}}
 
           <section>
@@ -222,10 +227,20 @@
         <button class="btn btn-link share success">{{_ 'story.email_now' }}</button>
       </div>
 
-      <footer class="text-right">
-        <button type="button" class="btn btn-link success share">{{_ 'story.email_story' }}</button>
-        <br>
-        <button type="button" class="btn btn-link danger delete">{{_ 'story.delete_story' }}</button>
+      <div class="notice">
+        <p>If email submission does not work please change to the latest version of Chrome</p>
+      </div>
+
+      <footer class="container text-right w-full">
+        <button 
+          type="button"
+          class="btn btn-outline-success uppercase"
+          href="whatsapp://send?text={{ story.title }}"
+        >
+          Share media
+        </button>
+        <button type="button" class="btn btn-success share uppercase">{{_ 'story.email_story' }}</button>
+        <button type="button" class="btn btn-link danger delete pull-left">{{_ 'story.delete_story' }}</button>
       </footer>
     </article>
   </script>
