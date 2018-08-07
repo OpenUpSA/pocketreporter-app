@@ -687,6 +687,15 @@ section.empty {
   text-transform: uppercase;
 }
 
+.submit-button {
+  width: 100%;
+  margin-bottom: 1rem;
+
+  @media screen and (min-width: 550px) {
+    width: auto;
+  }
+}
+
 // Utility classes in correspondance with https://tailwindcss.com.
 
 .uppercase {
@@ -695,4 +704,8 @@ section.empty {
 
 .w-full {
   width: 100%;
+}
+
+.mb-12 {
+  margin-bottom: 3rem;
 }
