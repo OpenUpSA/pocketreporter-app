@@ -227,22 +227,19 @@
         <button class="btn btn-link share success">{{_ 'story.email_now' }}</button>
       </div>
 
-      <div class="container w-full">
+      <footer class="container text-right w-full">
         <a 
           type="button"
-          class="btn btn-outline-success uppercase submit-button w-full mb-12"
+          class="btn btn-default uppercase submit-button w-full mb-12"
           href="whatsapp://send?text={{ story.title }}"
         >
           Send media by Whatsapp
         </a>
-      </div>
 
+        <div class="notice mb-8">
+          <p>If email submission does not work please change to the latest version of Chrome</p>
+        </div>
 
-      <div class="notice">
-        <p>If email submission does not work please change to the latest version of Chrome</p>
-      </div>
-
-      <footer class="container text-right w-full">
         <button type="button" class="btn btn-success share uppercase submit-button">{{_ 'story.email_story' }}</button>
         <button type="button" class="btn btn-link danger delete pull-left submit-button">{{_ 'story.delete_story' }}</button>
       </footer>

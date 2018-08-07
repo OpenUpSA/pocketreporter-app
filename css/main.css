@@ -440,13 +440,6 @@ section.empty {
   border: 1px solid #d6d8db;
   padding: 2rem 1rem 1rem;
   border-radius: 4px;
-  margin: 0 1rem 1rem;
-}
-
-.btn-outline-success {
-  border: 1px solid #73c619;
-  color: #73c619;
-  background: none;
 }
 
 .submit-button {
@@ -471,4 +464,8 @@ section.empty {
 
 .mb-12 {
   margin-bottom: 3rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
 }
