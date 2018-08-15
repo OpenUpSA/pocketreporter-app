@@ -53,7 +53,7 @@ def read_l10n():
     with codecs.open("js/l10n.js", "r", "utf-8") as f:
         data = f.read()
         data = re.sub(r'^var L10N = ', '', data)
-        data = re.sub(r';$', '', data)
+        data = re.sub(r';\s*$', '', data)
         return json.loads(data)
 
 
