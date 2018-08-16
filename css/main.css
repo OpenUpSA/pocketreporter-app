@@ -432,3 +432,40 @@ section.empty {
   display: flex;
   flex-direction: column;
   justify-content: center; }
+
+.notice {
+  text-align: center;
+  color: #383d41;
+  background-color: #e2e3e5;
+  border: 1px solid #d6d8db;
+  padding: 2rem 1rem 1rem;
+  border-radius: 4px;
+}
+
+.submit-button {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 550px) {
+  .submit-button {
+    width: auto;
+    margin-right: 0.5rem;
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
