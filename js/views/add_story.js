@@ -13,37 +13,68 @@ var AddStoryView = Backbone.View.extend({
   },
 
   initialize: function(options) {
-    this.model = new Story({}, {parse: true});
-    if (options.topic) this.model.set('topic', options.topic);
+    if (options.category && options.topic) {
+      this.model = new Story({}, {parse: true});
+      this.model.set('topic', options.topic);
 
+    } else if (options.category) {
+      this.model = _.find(PocketReporter.categoriesList.models, function(item) {
+        return options.category === item.id;
+      })
+
+    } else {
+      this.model = PocketReporter.categoriesList;
+    }
+    
     this.render();
+
     this.listenTo(this.model, 'change', this.checkOk);
     this.listenTo(PocketReporter.state, 'change:locale', this.render);
   },
 
   render: function() {
-    var topics = PocketReporter.topics.toJSON();
-    var topic = this.model.get('topic');
-
-    // translate
-    _.each(topics, function(t) {
-      t.name = PocketReporter.polyglot.t('topics.' + t.id + '.name');
-    });
-
-    if (topic) topic = _.find(topics, function(t) { return t.id == topic; });
-
-    this.$el.html(this.template({
-      topics: topics,
-      topic: topic
-    }));
-
-    if (topic) {
-      this.$('.topic-section').hide();
-      this.$('.name-section').show();
+    var props = {
+      title: null,
+      categoriesList: null,
+      category: null,
+      story: null,
+      baseUrl: '/#add/',
     }
 
-    this.stickit();
+    function getActiveTopics(model) {
+      var activeTopicsKeys = model.toJSON().topics;
+      var allTopics = PocketReporter.topics.toJSON();
 
+      var activeTopics = activeTopicsKeys.map(function(key) {
+        return _.find(allTopics, function(item) {
+          return key === item.id;
+        })
+      })
+
+      activeTopics.forEach(function(item) {
+        item.name = PocketReporter.polyglot.t('topics.' + item.id + '.name');
+      })
+
+      return activeTopics;
+    }
+
+    if (this.model instanceof CategoriesList) {
+      props.categoriesList = this.model.toJSON();
+      
+    } else if (this.model instanceof Category) {
+      props.category = getActiveTopics(this.model);
+      props.title = this.model.toJSON().name;
+      props.baseUrl = '/#add/' + this.model.toJSON().id + '/';
+
+    } else if (this.model instanceof Story) {
+      var topics = PocketReporter.topics.toJSON();
+      var topic = this.model.get('topic');
+      props.story = _.find(topics, function(t) { return t.id == topic; });
+    }
+
+    this.$el.html(this.template(props));
+    this.stickit();
+  
     return this;
   },
 
