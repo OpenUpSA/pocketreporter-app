@@ -20,6 +20,24 @@ var Topic = Backbone.Model.extend({
 });
 
 
+var Category = Backbone.Model.extend({
+  defaults: function() {
+    return {
+      id: null,
+      icon: null,
+      name: null,
+      topics: [],
+    }
+  }
+});
+
+
+var CategoriesList = Backbone.Collection.extend({
+  model: Category,
+  comparator: 'display'
+});
+
+
 var Topics = Backbone.Collection.extend({
   model: Topic,
   comparator: 'name'
