@@ -7,7 +7,8 @@ var Router = Backbone.Router.extend({
     "" : "home",
     "stories/:id" : "story",
     "add" : "add",
-    "add/:topic" : "add",
+    "add/:category" : "add",
+    "add/:category/:topic" : "add",
     "about" : "about",
     "settings": "settings"
   },
@@ -30,8 +31,8 @@ var Router = Backbone.Router.extend({
     }
   },
 
-  add: function(topic) {
-    this.loadView(new AddStoryView({topic: topic}));
+  add: function(category, topic) {
+    this.loadView(new AddStoryView({category: category, topic: topic}));
   },
 
   about: function() {
@@ -76,6 +77,8 @@ var Router = Backbone.Router.extend({
 var PocketReporter = Backbone.Model.extend({
   initialize: function() {
     var self = this;
+
+    this.categoriesList = new CategoriesList(CATEGORIES);
 
     this.topics = new Topics(STORYCHECK_TOPICS);
     // storage version

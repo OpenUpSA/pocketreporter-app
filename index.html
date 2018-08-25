@@ -254,9 +254,12 @@
         <div class="row">
           <div class="col-md-6 center-col">
             <header id="app-header">
-              {{#if topic}}
+              {{#if category}}
                 <a href="#add" class="back"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-                <h1>{{ topic.name }}</h1>
+                <h1>{{ title }} Topics</h1>
+              {{else if topic}}
+                <a href="#add" class="back"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                <h1>{{ title }}</h1>
               {{else}}
                 <h1>{{_ 'story.new_story' }}</h1>
               {{/if}}
@@ -268,26 +271,37 @@
 
     <article class="with-header">
       <section class="topic-section">
-        <h3>{{_ 'story.type_of_story' }}</h3>
+        <h3>{{#if story}}{{_ 'story.story_name' }}:{{else}}{{_ 'story.type_of_story' }}{{/if}}</h3>
 
-        <ul class="topic-buttons clearfix">
-        {{#each topics}}
-          <li>
-            <a href="#add/{{ id }}"><i class="fa {{ icon }} addButton"></i><br>{{ name }}</a>
-          </li>
-        {{/each}}
+        <ul class="topic-buttons{{#if categoriesList}} stacked{{/if}} clearfix">
+          {{#if categoriesList}}
+            {{#each categoriesList}}
+              <li>
+                <a href="{{ ../baseUrl }}{{ id }}"><i class="fa {{ icon }} addButton"></i><br>{{ name }}</a>
+              </li>
+            {{/each}}
+          {{/if}}
+
+          {{#if category}}
+            {{#each category}}
+              <li>
+                <a href="{{ ../baseUrl }}{{ id }}"><i class="fa {{ icon }} addButton"></i><br>{{ name }}</a>
+              </li>
+            {{/each}}
+          {{/if}}
         </ul>
       </section>
 
-      <section class="name-section">
-        <h3>{{_ 'story.story_name' }}:</h3>
+      {{#if story}}
+        <section class="name-section">
+          <input type="text" class="form-control" name="title">
+        </section>
 
-        <input type="text" class="form-control" name="title">
-      </section>
+        <section class="name-section text-right">
+          <button class="btn btn-link success next disabled">{{_ 'story.start' }} <i class="fa fa-chevron-right"></i></button>
+        </section>
+      {{/if}}
 
-      <section class="name-section text-right">
-        <button class="btn btn-link success next disabled">{{_ 'story.start' }} <i class="fa fa-chevron-right"></i></button>
-      </section>
     </article>
   </script>
 
@@ -429,6 +443,7 @@
   <script src="js/vendor/jquery.autogrow-textarea.js"></script>
   <script src="js/vendor/polyglot.min.js"></script>
 
+  <script src="js/categories.js"></script>
   <script src="js/l10n.js"></script>
   <script src="js/helpers.js"></script>
   <script src="js/models.js"></script>
