@@ -1,4 +1,4 @@
-const cacheId = 'cache-and-update-v1';
+const cacheId = 'cache-and-update-v2';
 const cacheItems = [
 'css/bootstrap.css',
 'css/bootstrap.min.css',
