@@ -1,4 +1,4 @@
-const cacheId = 'cache-and-update-v1';
+const cacheId = 'cache-and-update-v2';
 const cacheItems = [
 'css/bootstrap.css',
 'css/bootstrap.min.css',
@@ -32,6 +32,7 @@ const cacheItems = [
 'js/main.js',
 'js/models.js',
 'js/topics.js',
+'js/categories.js',
 'js/vendor/backbone-1.3.3-min.js',
 'js/vendor/backbone.localStorage.js',
 'js/vendor/backbone.stickit-0.9.2.js',

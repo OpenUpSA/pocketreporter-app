@@ -20,7 +20,7 @@ var Topic = Backbone.Model.extend({
 });
 
 
-var Category = Backbone.Model.extend({
+var TopicsList = Backbone.Model.extend({
   defaults: function() {
     return {
       id: null,
@@ -33,7 +33,7 @@ var Category = Backbone.Model.extend({
 
 
 var CategoriesList = Backbone.Collection.extend({
-  model: Category,
+  model: TopicsList,
   comparator: 'display'
 });
 
