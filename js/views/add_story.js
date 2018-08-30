@@ -45,7 +45,9 @@ var AddStoryView = Backbone.View.extend({
       var activeTopics = _.map(model.get('topics'), function(id) { return PocketReporter.topics.get(id).toJSON(); });
 
       activeTopics.forEach(function(item) {
-        item.name = PocketReporter.polyglot.t('topics.' + item.id + '.name');
+        if (!item.custom) {
+          item.name = PocketReporter.polyglot.t('topics.' + item.id + '.name');
+        }
       })
 
       return activeTopics;
@@ -55,6 +57,10 @@ var AddStoryView = Backbone.View.extend({
       props.categoriesList = this.model.toJSON();
       
     } else if (this.model instanceof TopicsList) {
+      if (props.categoryId === 'custom') {
+        props.custom = true;
+      }
+
       props.topicsList = getActiveTopics(this.model);
 
     } else if (this.model instanceof Story) {
@@ -65,7 +71,7 @@ var AddStoryView = Backbone.View.extend({
 
     this.$el.html(this.template(props));
     this.stickit();
-  
+
     return this;
   },
 

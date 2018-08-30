@@ -27,6 +27,7 @@ var TopicsList = Backbone.Model.extend({
       icon: null,
       name: null,
       topics: [],
+      custom: false,
     }
   }
 });
@@ -42,6 +43,21 @@ var Topics = Backbone.Collection.extend({
   model: Topic,
   comparator: 'name'
 });
+
+
+var CustomId = Backbone.Model.extend({
+  defaults: function() {
+    return {
+      idSlug: '',
+      loading: false,
+      notExists: false,
+      error: false,
+      success: false,
+      exists: false,
+      notExist: false,
+    }
+  }
+})
 
 
 var Story = Backbone.Model.extend({

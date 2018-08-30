@@ -36,8 +36,13 @@ var HomeView = Backbone.View.extend({
       var d = story.toJSON();
 
       d.percent_complete = story.percentComplete();
-      d.topic_name = topic ? PocketReporter.polyglot.t('topics.' + topic.id + '.name') : d.topic;
 
+      if (topic && topic.get('custom')) {
+        d.topic_name = PocketReporter.topics.get(d.topic).get('name');
+      } else {
+        d.topic_name = topic ? PocketReporter.polyglot.t('topics.' + topic.id + '.name') : d.topic;
+      }
+      
       return d;
     }
 

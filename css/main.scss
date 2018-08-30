@@ -723,7 +723,7 @@ section.empty {
 }
 
 .topic-buttons.stacked li::before {
-  content: 'xxx';
+  content: '';
   position: absolute;
   z-index: 1;
   top: 6px;
@@ -735,7 +735,7 @@ section.empty {
 } 
 
 .topic-buttons.stacked li::after {
-  content: 'xxx';
+  content: '';
   position: absolute;
   z-index: 2;
   top: 3px;
@@ -745,6 +745,66 @@ section.empty {
   background-color: #69a626;
   border: 1px solid #73c619;
 } 
+
+
+.add-story-view .topic-buttons li.is-custom a {
+  background: #797979;
+  border-color: #5a5a5a;
+}
+
+.add-story-view .topic-buttons li.is-custom::before {
+  background: #797979;
+  border-color: #5a5a5a;
+}
+
+.add-story-view .topic-buttons li.is-custom::after {
+  background: #797979;
+  border-color: #5a5a5a;
+}
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.loading {
+  margin: 30px auto;
+  width: 60px;
+  height: 60px;
+  border: 4px solid #73c619;
+  border-left-color: transparent;
+  border-radius: 50%;
+  animation-name: spin;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.loading-text {
+  margin-top: 20px;
+  color: #73c619;
+  text-align: center;
+}
+
+.loading-text.has-error {
+  color: red;
+  text-align: center;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+
+
+
 
 
 // Utility classes in correspondance with https://tailwindcss.com.
@@ -760,3 +820,5 @@ section.empty {
 .mb-12 {
   margin-bottom: 3rem;
 }
+
+
