@@ -171,7 +171,7 @@
 
   <script id="story-question-template" type="text/x-handlebars-template">
     <i class="fa fa-check-circle"></i>
-    <h3>{{ num }}. {{ q.question }}</h3>
+    <h3>{{ num }}. {{{ q.question }}}</h3>
 
     <textarea name="notes" placeholder="{{_ 'story.write_your_answer' }}"></textarea>
   </script>
@@ -248,13 +248,62 @@
     </article>
   </script>
 
-  <script id="add-story-view-template" type="text/x-handlebars-template">
+  <script id="add-custom-view-template" type="text/x-handlebars-template">
     <div id="header-wrapper">
       <div class="container">
         <div class="row">
           <div class="col-md-6 center-col">
             <header id="app-header">
               <a href="#add" class="back"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+              <h1>Add a Custom Story Template</h1>
+            </header>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <article class="with-header">
+        {{#if loading}}
+          <div class="loading"></div>
+          <div class="loading-text">Downloading...</div>
+        {{else}}
+          <section class="topic-section">
+            <h3>Please enter template ID as shared with you:</h3>
+          </section>
+
+          <section class="name-section text-right">
+            <input type="text" class="form-control" name="idSlug">
+            <button class="btn btn-link success send">Download template <i class="fa fa-chevron-right"></i></button>
+          </section>
+        {{/if}}
+
+        {{#if success}}
+          <div class="loading-text"><i class="fa fa-check"></i> Requested custom template has been installed!</div>
+          <div class="loading-text underline"><a href="/#add/custom">View new template</a></div>
+        {{/if}}
+
+        {{#if exists}}
+          <div class="loading-text has-error"><i class="fa fa-exclamation-triangle"></i> Requested custom template has already been installed.</div>
+        {{/if}}
+
+        {{#if notExist}}
+          <div class="loading-text has-error"><i class="fa fa-exclamation-triangle"></i> Requested custom template does not exist.</div>
+        {{/if}}
+
+        {{#if error}}
+          <div class="loading-text has-error"><i class="fa fa-exclamation-triangle"></i> Something went wrong. Please try again later. If the issue persists please contact us.</div>
+        {{/if}}
+      </section>
+    </article>
+  </script>
+
+  <script id="add-story-view-template" type="text/x-handlebars-template">
+    <div id="header-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 center-col">
+            <header id="app-header">
+              {{#unless categoriesList}}<a href="#add" class="back"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>{{/unless}}
               <h1>{{_ 'story.new_story' }}</h1>
             </header>
           </div>
@@ -269,7 +318,7 @@
         <ul class="topic-buttons{{#if categoriesList}} stacked{{/if}} clearfix">
           {{#if categoriesList}}
             {{#each categoriesList}}
-              <li>
+              <li class="{{#if custom}} is-custom{{/if}}">
                 <a href="#add/{{ id }}"><i class="fa {{ icon }} addButton"></i><br>{{ name }}</a>
               </li>
             {{/each}}
@@ -281,6 +330,12 @@
                 <a href="#add/{{ ../categoryId }}/{{ id }}"><i class="fa {{ icon }} addButton"></i><br>{{ name }}</a>
               </li>
             {{/each}}
+          {{/if}}
+
+          {{#if custom}}
+            <li class="is-custom">
+              <a href="/#add-custom"><i class="fa fa-plus addButton"></i><br>Add custom template</a>
+            </li>
           {{/if}}
         </ul>
       </section>
@@ -441,6 +496,7 @@
   <script src="js/helpers.js"></script>
   <script src="js/models.js"></script>
   <script src="js/topics.js"></script>
+  <script src="js/views/add_custom.js"></script>
   <script src="js/views/footer.js"></script>
   <script src="js/views/home.js"></script>
   <script src="js/views/add_story.js"></script>

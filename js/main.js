@@ -1,4 +1,82 @@
 var gtagOfflineWrapper = new OfflineEventQue('gtagOffline', gtag);
+var localStateString = localStorage.getItem('pocketReporterCustomTemplates');
+var customKeys = localStateString ? JSON.parse(localStateString).topics.map(function(item) { return item.id }) : [];
+
+
+function normaliseWordpressSchema(result) {
+  return {
+    custom: true,
+    icon: 'fa-bookmark',
+    id: result.slug,
+    name: result.title.rendered,
+    questions: result.acf.questions_list.map(function(item) { 
+      return {
+        key: item.num,
+        num: item.num,
+        question: removeParagraphTags(item.question),
+        custom: true,
+      }
+    }),
+    length: result.acf.questions_list.length,
+  }
+}
+
+
+
+function removeParagraphTags(string) {
+  return string.replace(/<[\/]?p>/ig, '');
+}
+
+
+function syncLocalStorage(ids, callback) {
+  var updatedState = [];
+  var outstandingRequests = 0;
+  ids.forEach((id) => {
+    outstandingRequests += 1;
+    jQuery.ajax(
+      'http://18.202.6.42//wp-json/wp/v2/questions?slug=' + id,
+      {
+        error: function() {
+          if (callback) {
+            callback(null);
+          }
+        },
+
+        success: function(response) { 
+          outstandingRequests -= 1;
+
+          if (response.length > 0) {
+            updatedState.push(normaliseWordpressSchema(response[0]));
+          }
+
+          if (outstandingRequests === 0) {
+            var newState = {
+              topics: updatedState,
+              categories: [
+                {
+                  custom: true,
+                  icon: 'fa-plus',
+                  id: 'custom',
+                  name: 'Custom Templates',
+                  topics: updatedState.map(function(item) { return item.id })
+                }
+              ]
+            }
+
+            localStorage.setItem('pocketReporterCustomTemplates', JSON.stringify(newState));
+
+            if (callback) {
+              callback(newState);
+            }
+          }
+        },
+      }
+    )
+  });
+}
+
+
+syncLocalStorage(customKeys);
 
 
 /*** Router ***/
@@ -9,6 +87,7 @@ var Router = Backbone.Router.extend({
     "add" : "add",
     "add/:category" : "add",
     "add/:category/:topic" : "add",
+    "add-custom": "addCustom",
     "about" : "about",
     "settings": "settings"
   },
@@ -19,6 +98,10 @@ var Router = Backbone.Router.extend({
 
   home: function() {
     this.loadView(new HomeView());
+  },
+
+  addCustom: function() {
+    this.loadView(new AddCustom({category: 'category', topic: 'topic'}));
   },
 
   story: function(id) {
@@ -73,14 +156,41 @@ var Router = Backbone.Router.extend({
 });
 
 
+var categoriesPlacholder = [{
+  custom: true,
+  icon: 'fa-plus',
+  id: 'custom',
+  name: 'Custom Templates',
+  topics: [],
+}];
+
+
+function mergeWebStorageAndLocal() {
+  if (!localStateString) {
+    return {
+      topics: STORYCHECK_TOPICS,
+      categories: CATEGORIES.concat(categoriesPlacholder),
+    };
+  }
+
+  const localState = JSON.parse(localStateString);
+  return {
+    topics: STORYCHECK_TOPICS.concat(localState.topics),
+    categories: CATEGORIES.concat(localState.categories),
+  };
+}
+
+
+var currentState = mergeWebStorageAndLocal();
+
+
 /*** Globals ***/
 var PocketReporter = Backbone.Model.extend({
   initialize: function() {
     var self = this;
 
-    this.categoriesList = new CategoriesList(CATEGORIES);
-
-    this.topics = new Topics(STORYCHECK_TOPICS);
+    this.categoriesList = new CategoriesList(currentState.categories);
+    this.topics = new Topics(currentState.topics);
     // storage version
     // NB: changing this will clear all stories when a user next loads the app!
     this.version = 5;
@@ -283,3 +393,4 @@ var app = {
 };
 
 app.initialize();
+

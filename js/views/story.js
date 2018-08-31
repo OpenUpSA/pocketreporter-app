@@ -15,6 +15,7 @@ var QuestionView = Backbone.View.extend({
   initialize: function(options) {
     this.question = options.question;
     this.key = this.question.key;
+    this.custom = this.question.custom;
     this.num = options.num;
     this.story = options.story;
     this.listenTo(this.model, 'change:notes', this.answerChanged);
@@ -29,7 +30,9 @@ var QuestionView = Backbone.View.extend({
 
   render: function() {
     var q = this.question;
-    q.question = PocketReporter.polyglot.t('topics.' + this.story.get('topic') + '.questions.' + q.key);
+    if (!this.custom) {
+      q.question = PocketReporter.polyglot.t('topics.' + this.story.get('topic') + '.questions.' + q.key);
+    }
 
     this.$el
       .html(this.template({
