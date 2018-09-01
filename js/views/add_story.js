@@ -57,10 +57,7 @@ var AddStoryView = Backbone.View.extend({
       props.categoriesList = this.model.toJSON();
       
     } else if (this.model instanceof TopicsList) {
-      if (props.categoryId === 'custom') {
-        props.custom = true;
-      }
-
+      props.custom = props.categoryId === 'custom';
       props.topicsList = getActiveTopics(this.model);
 
     } else if (this.model instanceof Story) {
