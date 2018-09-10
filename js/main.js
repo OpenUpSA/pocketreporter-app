@@ -171,7 +171,7 @@ var PocketReporter = Backbone.Model.extend({
 
   customTopicSideEffects: function() {
     this.categoriesList.get('custom').set('topics', this.customTopics.pluck('id'));
-    this.topics.add(this.customTopics.models);
+    this.topics.add(this.customTopics.models, {merge: true});
   },
 
   addCustomTemplateFromApi: function(idArray, callback) {
