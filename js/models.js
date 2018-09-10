@@ -1,10 +1,10 @@
 /*** Models ***/
-
 // PocketReporter state
 var State = Backbone.Model.extend({
   defaults: {
     stories: [],
     nextId: 1,
+    customTopics: null,
   }
 });
 
@@ -45,7 +45,7 @@ var Topics = Backbone.Collection.extend({
 });
 
 
-var CustomId = Backbone.Model.extend({
+var RequestForTemplate = Backbone.Model.extend({
   defaults: function() {
     return {
       idSlug: '',

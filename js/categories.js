@@ -78,4 +78,11 @@ var CATEGORIES = [
       '13',
     ],
   },
+  {
+    custom: true,
+    id: 'custom',
+    icon: 'fa-plus',
+    name: 'Custom Templates',
+    topics: [],
+  },
 ];

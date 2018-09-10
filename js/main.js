@@ -1,84 +1,3 @@
-var gtagOfflineWrapper = new OfflineEventQue('gtagOffline', gtag);
-var localStateString = localStorage.getItem('pocketReporterCustomTemplates');
-var customKeys = localStateString ? JSON.parse(localStateString).topics.map(function(item) { return item.id }) : [];
-
-
-function normaliseWordpressSchema(result) {
-  return {
-    custom: true,
-    icon: 'fa-bookmark',
-    id: result.slug,
-    name: result.title.rendered,
-    questions: result.acf.questions_list.map(function(item) { 
-      return {
-        key: item.num,
-        num: item.num,
-        question: removeParagraphTags(item.question),
-        custom: true,
-      }
-    }),
-    length: result.acf.questions_list.length,
-  }
-}
-
-
-
-function removeParagraphTags(string) {
-  return string.replace(/<[\/]?p>/ig, '');
-}
-
-
-function syncLocalStorage(ids, callback) {
-  var updatedState = [];
-  var outstandingRequests = 0;
-  ids.forEach((id) => {
-    outstandingRequests += 1;
-    jQuery.ajax(
-      'http://18.202.6.42//wp-json/wp/v2/questions?slug=' + id,
-      {
-        error: function() {
-          if (callback) {
-            callback(null);
-          }
-        },
-
-        success: function(response) { 
-          outstandingRequests -= 1;
-
-          if (response.length > 0) {
-            updatedState.push(normaliseWordpressSchema(response[0]));
-          }
-
-          if (outstandingRequests === 0) {
-            var newState = {
-              topics: updatedState,
-              categories: [
-                {
-                  custom: true,
-                  icon: 'fa-plus',
-                  id: 'custom',
-                  name: 'Custom Templates',
-                  topics: updatedState.map(function(item) { return item.id })
-                }
-              ]
-            }
-
-            localStorage.setItem('pocketReporterCustomTemplates', JSON.stringify(newState));
-
-            if (callback) {
-              callback(newState);
-            }
-          }
-        },
-      }
-    )
-  });
-}
-
-
-syncLocalStorage(customKeys);
-
-
 /*** Router ***/
 var Router = Backbone.Router.extend({
   routes : {
@@ -87,7 +6,7 @@ var Router = Backbone.Router.extend({
     "add" : "add",
     "add/:category" : "add",
     "add/:category/:topic" : "add",
-    "add-custom": "addCustom",
+    "add-custom-template": "addCustomTemplate",
     "about" : "about",
     "settings": "settings"
   },
@@ -100,8 +19,8 @@ var Router = Backbone.Router.extend({
     this.loadView(new HomeView());
   },
 
-  addCustom: function() {
-    this.loadView(new AddCustom({category: 'category', topic: 'topic'}));
+  addCustomTemplate: function() {
+    this.loadView(new AddCustomTemplate());
   },
 
   story: function(id) {
@@ -156,41 +75,15 @@ var Router = Backbone.Router.extend({
 });
 
 
-var categoriesPlacholder = [{
-  custom: true,
-  icon: 'fa-plus',
-  id: 'custom',
-  name: 'Custom Templates',
-  topics: [],
-}];
-
-
-function mergeWebStorageAndLocal() {
-  if (!localStateString) {
-    return {
-      topics: STORYCHECK_TOPICS,
-      categories: CATEGORIES.concat(categoriesPlacholder),
-    };
-  }
-
-  const localState = JSON.parse(localStateString);
-  return {
-    topics: STORYCHECK_TOPICS.concat(localState.topics),
-    categories: CATEGORIES.concat(localState.categories),
-  };
-}
-
-
-var currentState = mergeWebStorageAndLocal();
-
-
 /*** Globals ***/
 var PocketReporter = Backbone.Model.extend({
   initialize: function() {
     var self = this;
 
-    this.categoriesList = new CategoriesList(currentState.categories);
-    this.topics = new Topics(currentState.topics);
+    this.gtagOfflineWrapper = new OfflineEventQue('gtagOffline', gtag);
+    this.categoriesList = new CategoriesList(CATEGORIES);
+    this.topics = new Topics(STORYCHECK_TOPICS);
+    
     // storage version
     // NB: changing this will clear all stories when a user next loads the app!
     this.version = 5;
@@ -250,9 +143,14 @@ var PocketReporter = Backbone.Model.extend({
     this.state.set('version', this.version);
     this.state.set('stories', new Stories(val.stories, {parse: true}));
     this.state.set('user', new Backbone.Model(val.user, {parse: true}));
+    this.state.set('customTopics', new Topics(val.customTopics, {parse: true}));
 
     this.stories = this.state.get('stories');
     this.user = this.state.get('user');
+    this.customTopics = this.state.get('customTopics');
+
+    this.listenTo(this.customTopics, 'add remove', this.customTopicSideEffects);
+    this.customTopicSideEffects();
 
     // if no locale is set, show a message telling the user that it's new,
     // then set a default
@@ -268,6 +166,63 @@ var PocketReporter = Backbone.Model.extend({
   save: function() {
     if (this.storage) {
       this.storage.setItem('PocketReporter', JSON.stringify(this.state.toJSON()));
+    }
+  },
+
+  customTopicSideEffects: function() {
+    this.categoriesList.get('custom').set('topics', this.customTopics.pluck('id'));
+    this.topics.add(this.customTopics.models);
+  },
+
+  addCustomTemplateFromApi: function(idArray, callback) {
+    var remaingRequest = idArray.length;
+
+    idArray.forEach(function(id) {
+      jQuery.ajax(
+        'http://18.202.6.42/wp-json/wp/v2/questions?slug=' + encodeURI(id),
+        {
+          error: function() {
+            remaingRequest -= 1;
+
+            if (callback) {
+              return callback('error');
+            }
+          },
+
+          success: function(response) { 
+            remaingRequest -= 1;
+
+            if (response.length < 1 ) {
+              return callback && callback('notExist');
+            }
+
+            var newTopic = PocketReporter.normaliseWordpressSchema(response[0]);
+            PocketReporter.customTopics.add(newTopic);
+            
+            if (remaingRequest < 1 && callback) {
+              return callback('success');
+            }
+          }
+        }
+      )
+    });
+  },
+
+  normaliseWordpressSchema: function(result) {
+    return {
+      custom: true,
+      icon: 'fa-bookmark',
+      id: result.slug,
+      name: result.title.rendered,
+      questions: result.acf.questions_list.map(function(item) { 
+        return {
+          key: item.num,
+          num: item.num,
+          question: item.question.replace(/<[\/]?p>/ig, ''),
+          custom: true,
+        }
+      }),
+      length: result.acf.questions_list.length,
     }
   },
 
@@ -342,7 +297,7 @@ var PocketReporter = Backbone.Model.extend({
 
   trackEvent: function(action, category, label, value) {
     if ('gtag' in window) {
-      gtagOfflineWrapper.event(
+      this.gtagOfflineWrapper.event(
         'event', 
         action, 
         {
@@ -357,7 +312,7 @@ var PocketReporter = Backbone.Model.extend({
 
   trackView: function(view) {
     if ('gtag' in window) {
-      gtagOfflineWrapper.event(
+      this.gtagOfflineWrapper.event(
         'config', 
         'UA-48399585-51', 
         {
