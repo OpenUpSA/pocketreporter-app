@@ -81,7 +81,6 @@ var PocketReporter = Backbone.Model.extend({
     var self = this;
 
     this.gtagOfflineWrapper = new OfflineEventQue('gtagOffline', gtag);
-    this.customTopics = new TopicsList();
     this.categoriesList = new CategoriesList(CATEGORIES);
     this.topics = new Topics(STORYCHECK_TOPICS);
     
@@ -144,26 +143,14 @@ var PocketReporter = Backbone.Model.extend({
     this.state.set('version', this.version);
     this.state.set('stories', new Stories(val.stories, {parse: true}));
     this.state.set('user', new Backbone.Model(val.user, {parse: true}));
-    this.state.set('customCategory', new TopicsList(val.customCategory, {parse: true}));
     this.state.set('customTopics', new Topics(val.customTopics, {parse: true}));
 
     this.stories = this.state.get('stories');
     this.user = this.state.get('user');
-    this.customCategory = this.state.get('customCategory');
     this.customTopics = this.state.get('customTopics');
 
-    console.log(this.customCategory)
-
-    this.categoriesList.add({
-        custom: true,
-        icon: 'fa-plus',
-        id: 'custom',
-        name: 'Custom Templates',
-        topics: this.customCategory.get('topics'),
-    });
-
-    var topics = this.topics;
-    this.customTopics.toJSON().forEach(function(item) { topics.add(item) })
+    this.listenTo(this.customTopics, 'add remove', this.customTopicSideEffects);
+    this.customTopicSideEffects();
 
     // if no locale is set, show a message telling the user that it's new,
     // then set a default
@@ -180,6 +167,11 @@ var PocketReporter = Backbone.Model.extend({
     if (this.storage) {
       this.storage.setItem('PocketReporter', JSON.stringify(this.state.toJSON()));
     }
+  },
+
+  customTopicSideEffects: function() {
+    this.categoriesList.get('custom').set('topics', this.customTopics.pluck('id'));
+    this.topics.add(this.customTopics.models);
   },
 
   addCustomTemplateFromApi: function(idArray, callback) {
@@ -205,27 +197,15 @@ var PocketReporter = Backbone.Model.extend({
             }
 
             var newTopic = PocketReporter.normaliseWordpressSchema(response[0]);
-            PocketReporter.topics.add(newTopic);
-
-            var customCategory = (PocketReporter.categoriesList.get('custom')).toJSON();
-            customCategory.topics.push(newTopic.id);
-            PocketReporter.categoriesList.add(customCategory);
-
-            PocketReporter.storeCustomTopic(newTopic, customCategory)
+            PocketReporter.customTopics.add(newTopic);
             
             if (remaingRequest < 1 && callback) {
-              PocketReporter.save();
               return callback('success');
             }
           }
         }
       )
     });
-  },
-
-  storeCustomTopic: function(newTopic, customCategory) {
-    PocketReporter.state.get('customCategory').set(customCategory)
-    PocketReporter.state.get('customTopics').add(newTopic)
   },
 
   normaliseWordpressSchema: function(result) {
