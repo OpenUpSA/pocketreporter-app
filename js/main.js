@@ -214,10 +214,10 @@ var PocketReporter = Backbone.Model.extend({
       icon: 'fa-bookmark',
       id: result.slug,
       name: result.title.rendered,
-      questions: result.acf.questions_list.map(function(item) { 
+      questions: result.acf.questions_list.map(function(item, index) { 
         return {
-          key: item.num,
-          num: item.num,
+          key: index,
+          num: index,
           question: item.question.replace(/<[\/]?p>/ig, ''),
           custom: true,
         }
