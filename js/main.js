@@ -179,7 +179,7 @@ var PocketReporter = Backbone.Model.extend({
 
     idArray.forEach(function(id) {
       jQuery.ajax(
-        'http://18.202.6.42/wp-json/wp/v2/questions?slug=' + encodeURI(id),
+        'https://custom.pocketreporter.co.za/wp-json/wp/v2/questions?slug=' + encodeURI(id),
         {
           error: function() {
             remaingRequest -= 1;
