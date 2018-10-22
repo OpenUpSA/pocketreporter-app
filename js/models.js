@@ -135,9 +135,23 @@ var Story = Backbone.Model.extend({
     return questions.join('\n---\n\n');
   },
 
+  whatsapp: function() {
+    var pending = this.pending();
+
+    if (pending.length > 0) {
+      if (!confirm(PocketReporter.polyglot.t('story.share_incomplete')))
+        return;
+    } 
+
+    var url = 'https://api.whatsapp.com/send';
+    url += '?text=' + encodeURIComponent(this.shareableBody());
+
+    window.open(url, '_blank');
+
+  },
+
   share: function() {
     var pending = this.pending();
-    var cordova = window.cordova || null;
 
     if (pending.length > 0) {
       if (!confirm(PocketReporter.polyglot.t('story.share_incomplete')))
@@ -149,7 +163,7 @@ var Story = Backbone.Model.extend({
     mailto += '?subject=' + encodeURIComponent(this.get('title'));
     mailto += '&body=' + encodeURIComponent(this.shareableBody());
 
-    window.open(mailto, '_system');
+    window.open(mailto, '_blank');
 
     PocketReporter.trackEvent('story', 'share');
   }
