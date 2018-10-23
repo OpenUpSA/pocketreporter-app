@@ -65,7 +65,8 @@ var StoryView = Backbone.View.extend({
   events: {
     'click #app-header h1': 'rename',
     'click .delete': 'deleteStory',
-    'click .share': 'share'
+    'click .share': 'share',
+    'click .whatsapp': 'whatsapp'
   },
 
   initialize: function() {
@@ -130,6 +131,11 @@ var StoryView = Backbone.View.extend({
   share: function(e) {
     e.preventDefault();
     this.model.share();
+  },
+
+  whatsapp: function(e) {
+    e.preventDefault();
+    this.model.whatsapp();
   },
 
   render: function() {
