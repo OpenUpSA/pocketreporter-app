@@ -626,7 +626,7 @@ ul.question-list {
       display: block;
       line-height: 1.2;
       height: 100px;
-      padding: 5px 2px;
+      padding: 5px 20px;
 
       background-color: $green-middle;
       border: 1px solid $grey-darker;
@@ -699,7 +699,7 @@ section.empty {
   display: block;
   line-height: 1.2;
   height: 100px;
-  padding: 5px 2px;
+  padding: 5px 20px;
   background-color: #73c619;
   border: 1px solid #979797;
   text-align: center; 
@@ -802,9 +802,16 @@ section.empty {
   text-decoration: underline;
 }
 
-
-
-
+@media screen and (max-width: 600px) {
+  .add-story-view {
+    .topic-buttons {
+      a {
+        height: 130px !important;
+        padding: 5px !important;
+      }
+    }
+  }
+}
 
 
 // Utility classes in correspondance with https://tailwindcss.com.
