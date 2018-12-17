@@ -7,6 +7,7 @@ var Router = Backbone.Router.extend({
     "add/:category" : "add",
     "add/:category/:topic" : "add",
     "add-custom-template": "addCustomTemplate",
+    "resources": "resources",
     "about" : "about",
     "settings": "settings"
   },
@@ -22,6 +23,11 @@ var Router = Backbone.Router.extend({
   addCustomTemplate: function() {
     this.loadView(new AddCustomTemplate());
   },
+
+  resources: function() {
+    this.loadView(new Resources());
+  },
+
 
   story: function(id) {
     var story = PocketReporter.stories.get(id);
