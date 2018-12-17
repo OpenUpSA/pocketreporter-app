@@ -313,6 +313,10 @@
                 <a href="#add/{{ id }}"><i class="fa {{ icon }} addButton"></i><br>{{ name }}</a>
               </li>
             {{/each}}
+
+            <li class="is-custom">
+              <a href="#resources"><i class="fa fa-book addButton"></i><br>Nigerian 2019 Elections Resources</a>
+            </li>
           {{/if}}
 
           {{#if topicsList}}
@@ -350,6 +354,120 @@
 
     </article>
   </script>
+
+  <script id="resources" type="text/x-handlebars-template">
+    <div id="header-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 center-col">
+            <header id="app-header">
+              <a href="#" class="back"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+              <h1>Nigerian 2019 Elections Resources</h1>
+            </header>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <article class="with-header">
+      <section class="topic-section">
+        <h3>Useful Links</h3>
+
+        <ul class="topic-buttons clearfix">
+          <li class="is-custom">
+            <a href="http://www.ipcng.org/nigerian-media-code-of-election/" target="_blank" re="noopener noreferrer">
+              Nigerian Media Code of Election of Coverage
+            </a>
+          </li>
+
+          <li class="is-custom">
+            <a href="http://www.inecnigeria.org/?page_id=3459" target="_blank" re="noopener noreferrer">
+              Nigerian Code of Conduct for Election Officials
+            </a>
+          </li>
+
+          <li class="is-custom">
+            <a href="http://www.inecnigeria.org/wp-content/uploads/2013/03/Code_of_Conduct_For_Political_Parties_Preamble.pdf" target="_blank" re="noopener noreferrer">
+              Nigerian Code of Conduct for Political Parties
+            </a>
+          </li>
+
+          <li class="is-custom">
+            <a href="http://lawnigeria.com/LawsoftheFederation/Electoral-Act,-2010.html" target="_blank" re="noopener noreferrer">
+              Nigerian Electoral Act
+            </a>
+          </li>
+
+          <li class="is-custom">
+            <a href="http://nbc.gov.ng/uploads/broadcast/Nigeria-Broadcasting-code.htm" target="_blank" re="noopener noreferrer">
+              Broadcast Code of Conduct
+            </a>
+          </li>
+
+          <li class="is-custom">
+            <a href="http://www.inecnigeria.org/?page_id=18" target="_blank" re="noopener noreferrer">
+              Registered Political Parties for 2019 Elections
+            </a>
+          </li>
+
+          <li class="is-custom">
+            <a href="http://www.inecnigeria.org/" target="_blank" re="noopener noreferrer">
+              Independent National Electoral Commission
+            </a>
+          </li>
+
+          <li class="is-custom">
+            <a href="http://www.inecnigeria.org/?page_id=18" target="_blank" re="noopener noreferrer">
+              INEC Elections Resources
+            </a>
+          </li>
+
+          <li class="is-custom">
+            <a href="http://www.inecnigeria.org/?page_id=22" target="_blank" re="noopener noreferrer">
+              INEC Voter Education Resources
+            </a>
+          </li>
+
+          <li class="is-custom">
+            <a href="/documents/Broadcasting_Guidelines/pdf" target="_blank" re="noopener noreferrer">
+              Broadcasting Guidelines
+            </a>
+          </li>
+            
+          <li class="is-custom">
+            <a href="/documents/Elections_Checklist.pdf" target="_blank" re="noopener noreferrer">
+              Elections Checklist
+            </a>
+          </li>
+
+          <li class="is-custom">
+            <a href="/documents/Elections_Irregularties.pdf" target="_blank" re="noopener noreferrer">
+              Election Irregularities
+            </a>
+          </li> 
+
+          <li class="is-custom">
+            <a href="/documents/Media_and_Surveys.pdf" target="_blank" re="noopener noreferrer">
+              Media and Surveys
+            </a>
+          </li>
+
+          <li class="is-custom">
+            <a href="/documents/Reporting_Handbook.pdf" target="_blank" re="noopener noreferrer">
+              Reporting Handbook
+            </a>
+          </li>
+
+          <li class="is-custom">
+            <a href="/documents/Rallies_and_Meetings.pdf" target="_blank" re="noopener noreferrer">
+              Rallies and Meetings
+            </a>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </script>
+
 
   <script id="userinfo-view-template" type="text/x-handlebars-template">
     <div id="header-wrapper">
@@ -499,6 +617,7 @@
   <script src="js/models.js"></script>
   <script src="js/topics.js"></script>
   <script src="js/views/add_custom_template.js"></script>
+  <script src="js/views/resources.js"></script>
   <script src="js/views/footer.js"></script>
   <script src="js/views/home.js"></script>
   <script src="js/views/add_story.js"></script>
