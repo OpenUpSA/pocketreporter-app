@@ -1,4 +1,4 @@
-const cacheId = 'cache-and-update-v8';
+const cacheId = 'cache-and-update-v10';
 const cacheItems = [
 'css/bootstrap.css',
 'css/bootstrap.min.css',
@@ -52,6 +52,8 @@ const cacheItems = [
 'js/views/settings.js',
 'js/views/story.js',
 'js/views/userinfo.js',
+'js/views/resources.js',
+'js/views/resources-general.js',
 ]
 
 

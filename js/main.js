@@ -8,6 +8,7 @@ var Router = Backbone.Router.extend({
     "add/:category/:topic" : "add",
     "add-custom-template": "addCustomTemplate",
     "resources": "resources",
+    "resources-general": "resourcesGeneral",
     "about" : "about",
     "settings": "settings"
   },
@@ -28,6 +29,9 @@ var Router = Backbone.Router.extend({
     this.loadView(new Resources());
   },
 
+  resourcesGeneral: function() {
+    this.loadView(new ResourcesGeneral());
+  },
 
   story: function(id) {
     var story = PocketReporter.stories.get(id);

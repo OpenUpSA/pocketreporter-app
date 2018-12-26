@@ -315,6 +315,10 @@
             {{/each}}
 
             <li class="is-custom">
+              <a href="#resources-general"><i class="fa fa-book addButton"></i><br>General Elections Resources</a>
+            </li>
+
+            <li class="is-custom">
               <a href="#resources"><i class="fa fa-book addButton"></i><br>Nigerian 2019 Elections Resources</a>
             </li>
           {{/if}}
@@ -355,13 +359,14 @@
     </article>
   </script>
 
+
   <script id="resources" type="text/x-handlebars-template">
     <div id="header-wrapper">
       <div class="container">
         <div class="row">
           <div class="col-md-6 center-col">
             <header id="app-header">
-              <a href="#" class="back"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+              <a href="#add" class="back"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
               <h1>Nigerian 2019 Elections Resources</h1>
             </header>
           </div>
@@ -433,7 +438,31 @@
               Broadcasting Guidelines
             </a>
           </li>
-            
+        </ul>
+      </section>
+    </article>
+  </script>
+
+
+  <script id="resources-general" type="text/x-handlebars-template">
+    <div id="header-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 center-col">
+            <header id="app-header">
+              <a href="#add" class="back"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+              <h1>General Elections Resources</h1>
+            </header>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <article class="with-header">
+      <section class="topic-section">
+        <h3>Useful Links</h3>
+
+        <ul class="topic-buttons clearfix">
           <li class="is-custom">
             <a href="/documents/Elections_Checklist.pdf" target="_blank" re="noopener noreferrer">
               Elections Checklist
@@ -453,14 +482,20 @@
           </li>
 
           <li class="is-custom">
-            <a href="/documents/Reporting_Handbook.pdf" target="_blank" re="noopener noreferrer">
-              Reporting Handbook
+            <a href="/documents/Rallies_and_Meetings.pdf" target="_blank" re="noopener noreferrer">
+              Rallies and Meetings
             </a>
           </li>
 
           <li class="is-custom">
-            <a href="/documents/Rallies_and_Meetings.pdf" target="_blank" re="noopener noreferrer">
-              Rallies and Meetings
+            <a href="/documents/Reporting_Handbook.pdf" target="_blank" re="noopener noreferrer">
+              Elections Reporting Handbook
+            </a>
+          </li>
+
+          <li class="is-custom">
+            <a href="/documents/Opinion_Polls.pdf" target="_blank" re="noopener noreferrer">
+              Opinion Polls
             </a>
           </li>
         </ul>
@@ -618,6 +653,7 @@
   <script src="js/topics.js"></script>
   <script src="js/views/add_custom_template.js"></script>
   <script src="js/views/resources.js"></script>
+  <script src="js/views/resources-general.js"></script>
   <script src="js/views/footer.js"></script>
   <script src="js/views/home.js"></script>
   <script src="js/views/add_story.js"></script>
